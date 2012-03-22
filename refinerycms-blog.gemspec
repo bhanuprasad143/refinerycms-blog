@@ -1,12 +1,12 @@
 # Encoding: UTF-8
 $:.push File.expand_path('../lib', __FILE__)
-require 'refinery/blog/version'
+#require 'refinery/blog/version'
 
-version = Refinery::Blog::Version.to_s
+#version = Refinery::Blog::Version.to_s
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-blog}
-  s.version           = version
+  s.version           = %q{2.0.1}
   s.description       = %q{A really straightforward open source Ruby on Rails blog engine designed for integration with Refinery CMS.}
   s.summary           = %q{Ruby on Rails blogging engine for Refinery CMS.}
   s.email             = %q{info@refinerycms.com}
@@ -28,3 +28,4 @@ Gem::Specification.new do |s|
   # Development dependencies
   s.add_development_dependency 'refinerycms-testing', '~> 2.0.0'
 end
+
