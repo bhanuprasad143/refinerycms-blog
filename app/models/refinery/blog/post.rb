@@ -37,11 +37,11 @@ module Refinery
       self.per_page = Refinery::Blog.posts_per_page
 
       def next
-        self.class.next(self)
+        self.class.by_site(self.site).next(self)
       end
 
       def prev
-        self.class.previous(self)
+        self.class.by_site(self.site).previous(self)
       end
 
       def live?

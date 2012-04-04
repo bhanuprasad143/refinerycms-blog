@@ -10,8 +10,9 @@ module Refinery
       protected
 
         def find_page
-          @page = Refinery::Page.find_by_link_url("/blog")
+          @page = Refinery::Page.by_site(current_site).where(:link_url => "/blog").first
         end
     end
   end
 end
+

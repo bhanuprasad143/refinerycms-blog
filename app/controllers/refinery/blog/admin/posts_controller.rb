@@ -14,7 +14,7 @@ module Refinery
         before_filter :check_category_ids, :only => :update
 
         def uncategorized
-          @posts = Refinery::Blog::Post.uncategorized.page(params[:page])
+          @posts = current_site.refinery_blog_posts.uncategorized.page(params[:page])
         end
 
         def tags
@@ -26,7 +26,7 @@ module Refinery
             wildcard = '%'
           end
 
-          @tags = Refinery::Blog::Post.tag_counts_on(:tags).where(
+          @tags = current_site.refinery_blog_posts.tag_counts_on(:tags).where(
               ["tags.name #{op} ?", "#{wildcard}#{params[:term].to_s.downcase}#{wildcard}"]
             ).map { |tag| {:id => tag.id, :value => tag.name}}
           render :json => @tags.flatten
@@ -78,7 +78,7 @@ module Refinery
 
       protected
         def find_all_categories
-          @categories = Refinery::Blog::Category.find(:all)
+          @categories = current_site.refinery_blog_categories
         end
 
         def check_category_ids

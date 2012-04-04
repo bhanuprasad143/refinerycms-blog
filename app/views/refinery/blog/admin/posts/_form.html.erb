@@ -102,7 +102,7 @@
           <%= f.label :user_id, t('.author') %>
           <%= refinery_help_tag t('.author_help') %>
           <br/>
-          <%= f.collection_select :user_id, ::Refinery::User.all, :id, :username %>
+          <%= f.collection_select :user_id, current_site.users, :id, :username %>
         </span>
       </div>
 
@@ -122,3 +122,4 @@
 <% content_for :stylesheets, stylesheet_link_tag('refinery/blog/backend') %>
 <% content_for :javascripts, javascript_include_tag('refinery/blog/backend') %>
 <%= render 'refinery/shared/admin/autocomplete', :dom_id => '#blog_post_tag_list', :url => refinery.tags_blog_admin_posts_url %>
+
